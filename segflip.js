@@ -1,4 +1,4 @@
-function segflip({ segs, min = -Infinity, max = Infinity, debug = false }) {
+function segflip({ segments: segs, min = -Infinity, max = Infinity, debug = false }) {
   if (debug) console.log("[segflip] segs:", segs);
   if (segs === undefined || segs === null || (Array.isArray(segs) && segs.length === 0)) {
     if (debug) console.log("[segflip] segments are empty so return the whole row flipped");
