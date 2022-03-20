@@ -1,6 +1,6 @@
 {
   "name": "segflip",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Flip the Inside and Outside of Segments on a Single-Dimensional Integer Line",
   "main": "segflip.js",
   "files": [
