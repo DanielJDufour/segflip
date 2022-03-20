@@ -35,7 +35,7 @@ const results = segflip({
   max: 2022
 });
 ```
-results is an array of time ranges outside the recession
+results is an array of year ranges when there wasn't a recession
 ```js
 [
   [2000, 2000],
