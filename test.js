@@ -78,6 +78,40 @@ test("flip three segments", ({ eq }) => {
   );
 });
 
+test("several short close segments", ({ eq }) => {
+  const results = segflip({
+    segments: [
+      [487, 488],
+      [489, 501],
+      [502, 503],
+      [504, 506]
+    ],
+    min: 0,
+    max: 900
+  });
+  eq(results, [
+    [0, 486],
+    [507, 900]
+  ]);
+});
+
+test("flip consecutive segments", ({ eq }) => {
+  const segments = [
+    [49, 51],
+    [52, 70]
+  ];
+  const results = segflip({
+    segments,
+    min: 0,
+    max: 255,
+    debug: false
+  });
+  eq(results, [
+    [0, 48],
+    [71, 255]
+  ]);
+});
+
 test("recessions", ({ eq }) => {
   // 21st century recessions in the United States
   // from https://en.wikipedia.org/wiki/List_of_recessions_in_the_United_States
@@ -106,5 +140,40 @@ test("recessions", ({ eq }) => {
     [2002, 2006],
     [2010, 2019],
     [2021, 2022]
+  ]);
+});
+
+test("bug", ({ eq }) => {
+  const results = segflip({
+    segments: [
+      [0, 11],
+      [58, 59]
+    ],
+    min: 0,
+    max: 255,
+    debug: false
+  });
+  eq(results, [
+    [12, 57],
+    [60, 255]
+  ]);
+});
+
+test("several short close segments with one gap", ({ eq }) => {
+  const results = segflip({
+    segments: [
+      [487, 488],
+      [499, 501],
+      [502, 503],
+      [505, 506]
+    ],
+    min: 0,
+    max: 900
+  });
+  eq(results, [
+    [0, 486],
+    [489, 498],
+    [504, 504],
+    [507, 900]
   ]);
 });
